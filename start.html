@@ -61,7 +61,7 @@
 
         .enter-button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #3d3d3d;
             border: none;
             border-radius: 5px;
             color: #fff;
@@ -70,10 +70,7 @@
             font-size: 16px;
         }
 
-        .enter-button:hover {
-            background-color: #0056b3;
-        }
-
+       
         h4 {
             font-size: 24px;
             margin-bottom: 20px;
@@ -114,10 +111,115 @@
             padding: 150px;
             border-radius: 5px;
             color: rgb(255, 255, 255);
+        }  :root{
+      --bgColor: #a4a1a1;
+      --scannerColor: #3fefef;
+      --imageColor: 130deg;
+    }
+    * {
+        margin:0;
+        padding:0;
+        font-family:consolas;
+    }
+    
+    body {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        background: var(--bgColor);
+    }
+    
+    .scan {
+        position:relative;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+    
+    .scan .fingerprint {
+        position:relative;
+        width:150px;
+        height:120px;
+        background:url(https://www.pngall.com/wp-content/uploads/2016/06/Fingerprint-Free-Download-PNG.png);
+        background-repeat: no-repeat;
+        background-size:150px;
+        cursor: pointer; /* Add cursor pointer */
+    }
+    
+    .scan .fingerprint::before {
+        content: '';
+        position:absolute;
+        top:0;
+        left:0;
+        width:130px;
+        height:100px;
+        background:url(https://www.pngall.com/wp-content/uploads/2016/06/Fingerprint-Free-Download-PNG.png);
+        filter: invert(100%) sepia(60%) saturate(3000%) hue-rotate(var(--imageColor)) brightness(95%) contrast(80%);
+        background-size:150px;
+        animation:animate 4s ease-in-out infinite;    
+    }
+    
+    
+    @keyframes animate {
+        0%, 100% {
+            height:0%;
         }
+        
+        50% {
+            height:100%;
+        }
+    }
+    
+    .scan .fingerprint::after {
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:8px;
+        background: var(--scannerColor);
+        border-radius:8px;
+        filter: drop-shadow(0 0 20px #3fefef) drop-shadow(0 0 60px #3fefef);
+        animation:moveLine 4s ease-in-out infinite;
+    }
+    
+    @keyframes moveLine {
+        0%, 100% {
+            top:0%;
+        }
+        
+        50% {
+            top:100%;
+        }
+    }
+    
+    .scan h3 {
+        text-transform:uppercase;
+        font-size:2em;
+        letter-spacing:2px;
+        margin-top:20px;
+        color: var(--scannerColor);   
+        filter:drop-shadow(0 0 20px var(--scannerColor)) drop-shadow(0 0 60px var(--scannerColor));
+        animation:animate_text 0.5s steps(1) infinite;
+    }
+    
+    @keyframes animate_text {
+        0%, 100% {
+            opacity:0;
+        }
+        
+        50% {
+            opacity:1;
+        }
+    }
+    p{
+        color:red;
+    }
     </style>
     <script src="start.js"></script>
     <script>
+
         function toggleDeveloperInfo() {
             var x = document.getElementById("developer-info");
             if (x.style.display === "none") {
@@ -141,6 +243,13 @@
                 icon.classList.add("fa-eye");
             }
         }
+        document.querySelector('.enter-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    setTimeout(function() {
+      document.getElementById('loginForm').submit(); // Submit the form after 3 seconds
+    }, 3000); // 3000 milliseconds = 3 seconds
+  });
     </script>
 </head>
 <body>
@@ -164,14 +273,21 @@
             <input type="password" id="password" class="password-input" placeholder="Your answer" required>
             <i id="showPasswordIcon" class="fas fa-eye show-password-icon" onclick="togglePasswordVisibility()"></i>
         </div>
-        <br>
-        <button type="submit" class="enter-button">Enter</button>
+        <br><p> Hold to scan and submit </p><br>
+        <button type="submit" class="enter-button"><form id="loginForm" action="submit.php" method="POST">
+            <div class="scan">
+              <div class="fingerprint" id="fingerprint"></div>
+           
+            </div>
+          </form></button>
     </form>
     <br><br><br>
     <div id="warning">
         NEVER REFRESH OR TRY TO BACK FROM ANY PAGE ELSE YOU WILL LOSE GAME! PLEASE WAIT 5 SECONDS.
     </div>
-</div>
+</div> 
+
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script> <!-- Font Awesome -->
 </body>
 </html>
