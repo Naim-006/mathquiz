@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction Number Validation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4ab44e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #325133;
+    }
+
+    p#validationResult {
+        color: red;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Final verification</h2>
+
+    <form id="transactionForm" onsubmit="validateTransaction(); return false;">
+        
+        <input type="text" id="transactionNumber" name="transactionNumber" placeholder="transaction Number" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="validationResult"></p>
+</div>
+
+<script>
+function validateTransaction() {
+    var transactionNumber = document.getElementById("transactionNumber").value;
+    var isValid = checkTransactionNumber(transactionNumber);
+
+    if (isValid) {
+        window.location.href = "start.html";
+    } else {
+        document.getElementById("validationResult").innerHTML = "Invalid Transaction Number";
+    }
+}
+
+function checkTransactionNumber(transactionNumber) {
+    var validTransactionNumbers = ["123456", "789012", "345678"];
+
+    if (validTransactionNumbers.includes(transactionNumber)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
+
+</body>
+</html>

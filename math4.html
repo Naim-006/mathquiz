@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Question</title>
+    <style>
+        body {
+        background-image: url('Cicada4.jpg');
+            background-size:cover;
+            background-position:center;
+            font-family: fantasy;
+            background-color: #fff4d5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #b2b2b2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .marquee {
+            font-size: 12px;
+            color: #f30a00;
+            margin-bottom: 20px;
+        }
+        .question-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .answer-input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .next-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .attempts {
+            margin-top: 10px;
+            color: red;
+        }
+        .timer {
+        text-align:center;
+         width:200px;
+        padding:5px ;
+        margin:10px;
+        border-radius:5px;
+        background-color:red;
+            font-size: 20px;
+            color: #6af5ff;
+            font-family:courier;
+        }
+          .menu-bar { position: absolute; top: 15px; right: 20px; cursor: pointer; color: #0003da; }
+         .developer-info { display: none; position: fixed; top:10%; left: %; background-color:#d5fff4; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); width:85%;height:80%;}
+    </style>
+     <script src="math4.js"></script>
+</head>
+<body><div class="menu-bar" onclick="toggleDeveloperInfo()"> _____<br>_____<br>_____</div>
+    
+    <!-- Developer info -->
+    <div class="developer-info" id="developer-info">
+        <h3>Developer </h3>
+        <p><img src="https://i.ibb.co/dWQHBh1/20240319-203819.jpg" width="100%" height="50%"></p>
+        <h4>Naim Hossain</h4>
+        <p align="center"><a href="https://www.facebook.com/kbauzbl">Facebook</a></p>
+        <p align="center"><a href="https://github.com/Naim-006">Github</a></p>
+        <p align="center"><a href="hnayeem264@gmail.com">E- mail</a></p><h3 align="center">   <a href="developer.html">See More</a></h3>
+        <!-- Add more information as needed -->
+    </div>
+     <div class="timer" id="timer">Timer: 02:00</div>
+    </div>
+    <div class="container">
+        
+        <marquee class="marquee">*You have only 3 attempts*</marquee>
+        <h2>Math Question 4</h2>
+        <p>If(x<sup>2</sup>+5) =4, so x=?</p>
+        
+        <div class="question-container">
+            
+            <h3>What is the answer?</h3>
+            <input type="text" id="answer" class="answer-input" placeholder="Enter your answer " required>
+            <button onclick="checkAnswer()" class="next-button">Next</button>
+            <p id="error-message" class="error-message"></p>
+            <p id="attempts" class="attempts"></p>
+        </div>
+       
+
+
+</body>
+</html>

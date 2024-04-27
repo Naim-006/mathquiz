@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #b4b1b1;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        form div {
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form select {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        form button {
+            width: 90%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .visible {
+            max-height: 1000px;
+            opacity: 1;
+            overflow: visible;
+            transition: all 0.5s ease;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+  <form action="https://formkeep.com/f/f0d8da502e04"
+  accept-charset="UTF-8"
+  enctype="multipart/form-data"
+  method="POST">
+     <center> <h3>PAYMENT VERIFICATION</h3></center>
+        <div>
+          
+            <input type="text" id="fullName" name="fullName" placeholder="Your Name " required>
+        </div>
+        <div>
+          
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div>
+            <label for="paymentMethod">Select Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" onchange="toggleVerification()" required>
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="bkash">BKASH</option>
+                <option value="nagad">NAGAD</option>
+                <option value="upay">UPAY</option>
+            </select>
+        </div>
+        <div id="verificationMethod" class="hidden">
+            <label for="verification">Select Payment Verification:</label>
+            <select id="verification" name="verification" required>
+              <option value="" disabled selected>Select verification media</option>
+                <option value="mobile">Mobile Number</option>
+                <option value="trnx">Transaction Number (TRDX)</option>
+            </select>
+        </div>
+        <div id="mobileNumber" class="hidden">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile"  placeholder="Mobile Number">
+        </div>
+        <div id="trnxNumber" class="hidden">
+            <label for="trnx">Transaction Number (TRDX):</label>
+            <input type="text" id="trnx" name="trnx"  placeholder="Transaction Number">
+        </div>
+        <button type="submit" class="hidden">Submit</button>
+    </form>
+
+    <script>
+        // Check if page is refreshed
+        if (performance.navigation.type === 1) {
+            // Redirect to index.html
+            window.location.href = 'varification.html';
+        }
+        function toggleVerification() {
+            var paymentMethod = document.getElementById("paymentMethod").value;
+            var verificationMethod = document.getElementById("verificationMethod");
+            var mobileNumber = document.getElementById("mobileNumber");
+            var trnxNumber = document.getElementById("trnxNumber");
+            var submitButton = document.querySelector("button");
+
+            if (paymentMethod === "bkash" || paymentMethod === "nagad" || paymentMethod === "upay") {
+                verificationMethod.classList.add("visible");
+            } else {
+                verificationMethod.classList.remove("visible");
+                mobileNumber.classList.remove("visible");
+                trnxNumber.classList.remove("visible");
+            }
+
+            if (verificationMethod.classList.contains("visible")) {
+                submitButton.classList.add("visible");
+            } else {
+                submitButton.classList.remove("visible");
+            }
+        }
+
+        document.getElementById("verification").addEventListener("change", function () {
+            var selectedOption = this.value;
+            var mobileNumber = document.getElementById("mobileNumber");
+            var trnxNumber = document.getElementById("trnxNumber");
+
+            if (selectedOption === "mobile") {
+                mobileNumber.classList.add("visible");
+                trnxNumber.classList.remove("visible");
+            } else if (selectedOption === "trnx") {
+                trnxNumber.classList.add("visible");
+                mobileNumber.classList.remove("visible");
+            }
+        });
+    </script>
+</body>
+</html>

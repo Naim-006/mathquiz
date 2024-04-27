@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>cicada 3301</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: fantasy;
+            background-image: url('Cicad.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 2px;
+            padding: ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            color: white;
+        }
+
+        p {
+            color: black;
+        }
+
+        .password-form {
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input {
+            padding: 10px 30px 10px 10px; /* adjusted padding for the icon */
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: calc(100% - 40px); /* adjusted width to accommodate the icon */
+        }
+
+        .show-password-icon {
+            position: absolute;
+            top: 35%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #f90000;
+        }
+
+        .show-password-icon:hover {
+            color: #f48484;
+        }
+
+        .enter-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .enter-button:hover {
+            background-color: #0056b3;
+        }
+
+        h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+
+        }
+
+        h3 {
+            color: black;
+        }
+
+        .menu-bar {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            color: #0003da;
+            z-index: 999; /* Ensure it's on top of other elements */
+        }
+
+        .developer-info {
+            display: none;
+            position: fixed;
+            top: 7%;
+            left: 2%;
+            background-color: 8098ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 85%;
+            height: 80%;
+            backdrop-filter: blur(60px);
+            z-index: 999; /* Ensure it's on top of other elements */
+        }
+
+        #warning {
+            margin: 100px 100px;
+            background-color: rgb(162, 11, 11);
+            padding: 150px;
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+    <script src="start.js"></script>
+    <script>
+        function toggleDeveloperInfo() {
+            var x = document.getElementById("developer-info");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var icon = document.getElementById("showPasswordIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="menu-bar" onclick="toggleDeveloperInfo()">_____<br>_____<br>_____</div>
+
+<!-- Developer info -->
+<div class="developer-info" id="developer-info">
+    <h3 align="center">Developed by </h3>
+    <p><img src="https://i.ibb.co/dWQHBh1/20240319-203819.jpg" width="100%" height="60%"></p>
+    <p align="center">Naim Hossain</p>
+    <p align="center"><a href="https://www.facebook.com/kbauzbl">Facebook</a></p>
+    <p align="center"><a href="https://github.com/Naim-006">Github</a></p>
+    <p align="center"><a href="hnayeem264@gmail.com">E-mail</a></p>
+    <h3 align="center"><a href="developer.html">See More</a></h3>
+    <!-- Add more information as needed -->
+</div>
+<div class="password-form">
+    <h5><i>Hey there! Let's start the game with 'মথপোকা'.</i> <br><br><br> → What was the name of a famous puzzle related to 'মথপোকা'?</h5>
+    <form id="passwordForm" onsubmit="return validatePassword()" method="post"><br><br>
+        <div class="password-input-container">
+            <input type="password" id="password" class="password-input" placeholder="Your answer" required>
+            <i id="showPasswordIcon" class="fas fa-eye show-password-icon" onclick="togglePasswordVisibility()"></i>
+        </div>
+        <br>
+        <button type="submit" class="enter-button">Enter</button>
+    </form>
+    <br><br><br>
+    <div id="warning">
+        NEVER REFRESH OR TRY TO BACK FROM ANY PAGE ELSE YOU WILL LOSE GAME! PLEASE WAIT 5 SECONDS.
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script> <!-- Font Awesome -->
+</body>
+</html>

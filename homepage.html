@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family:fantasy;
+            background-image: url('Cicada1.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          
+        
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid white;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            filter: blur(px);
+        }
+        .start-button {
+            padding: 15px 30px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid white;
+        }
+        .start-button:hover {
+            background-color: #45a049;
+        }
+        img {
+            border-radius: 10%;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+    <script src="homepage.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.ibb.co/L91djLt/Smart-Select-20240318-051910-Slides.jpg" alt="Smart-Select-20240318-051910-Slides" width="200px">
+        <br><br>
+        <button onclick="startGame()" class="start-button">Start</button>
+    </div>
+
+   
+</body>
+</html>
