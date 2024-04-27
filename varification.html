@@ -24,7 +24,7 @@
         width: 300px;
     }
 
-    h2 {
+    h3 {
         text-align: center;
         margin-bottom: 20px;
     }
@@ -64,20 +64,29 @@
         color: red;
         margin-top: 10px;
     }
+
+    .alert-button {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Final verification</h2>
+    <h3>Final verification</h3>
+
+    <p>Write here the code is given you. </p>
 
     <form id="transactionForm" onsubmit="validateTransaction(); return false;">
         
-        <input type="text" id="transactionNumber" name="transactionNumber" placeholder="transaction Number" required><br><br>
+        <input type="text" id="transactionNumber" name="transactionNumber" placeholder="code Number" required><br><br>
         <input type="submit" value="Submit">
     </form>
 
     <p id="validationResult"></p>
+    <p class="alert-button" onclick="showAlert()">Didn't recieved a code?</p>
 </div>
 
 <script>
@@ -88,7 +97,7 @@ function validateTransaction() {
     if (isValid) {
         window.location.href = "start.html";
     } else {
-        document.getElementById("validationResult").innerHTML = "Invalid Transaction Number";
+        document.getElementById("validationResult").innerHTML = "Invalid code Number";
     }
 }
 
@@ -100,6 +109,10 @@ function checkTransactionNumber(transactionNumber) {
     } else {
         return false;
     }
+}
+
+function showAlert() {
+    alert("Check your email. Make sure you have paid ,else the code won't be sent.");
 }
 </script>
 
